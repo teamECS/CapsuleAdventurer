@@ -7,8 +7,14 @@ public class CameraController : MonoBehaviour {
 
     private Vector3 offset;
 
+    private Quaternion initialRot;
+    private Vector3 initialPos;
+
 	// Use this for initialization
 	void Start () {
+        initialRot = transform.rotation;
+        initialPos = transform.position;
+
         if (player == null) player = GameObject.Find("Player");
         offset = transform.position-player.transform.position;
 	}
@@ -24,5 +30,11 @@ public class CameraController : MonoBehaviour {
         else if (Input.GetKey(KeyCode.RightArrow))   
             transform.RotateAround(player.transform.position, Vector3.up, -5);
         offset = transform.position - player.transform.position;
+    }
+
+    public void Restart()
+    {
+        transform.rotation = initialRot;
+        transform.position = initialPos;
     }
 }

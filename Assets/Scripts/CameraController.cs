@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour {
     public GameObject player;
 
     private Vector3 offset;
+    private Vector3 initialOffset;
 
     private Quaternion initialRot;
     private Vector3 initialPos;
@@ -17,6 +18,7 @@ public class CameraController : MonoBehaviour {
 
         if (player == null) player = GameObject.Find("Player");
         offset = transform.position-player.transform.position;
+        initialOffset = offset;
 	}
 
     //void LateUpdate () {
@@ -36,5 +38,6 @@ public class CameraController : MonoBehaviour {
     {
         transform.rotation = initialRot;
         transform.position = initialPos;
+        offset = initialOffset;
     }
 }

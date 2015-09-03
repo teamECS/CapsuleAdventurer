@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour {
                 if (timer.GetRateOfTimeRemaining() == 0)
                 {
                     gameState = GameState.TIMEUP;
-                    timer.StopTimer();
+                    //timer.StopTimer();
                     fillterController.StopBlinking();
                     fillterController.Change2Black();
                 }

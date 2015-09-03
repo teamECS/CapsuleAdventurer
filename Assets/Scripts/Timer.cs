@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour {
             if (timeRemaining <= 0)
             {
                 timeRemaining = 0;
-                timerStarted = false;
+                StopTimer();
             }
         }
 	}

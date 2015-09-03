@@ -21,6 +21,8 @@ public class Pauser : MonoBehaviour {
 	void Start() {
 		// ポーズ対象に追加する
 		targets.Add(this);
+        //ポーズする
+        Pause();
 	}
  
 	// 破棄されるとき

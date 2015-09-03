@@ -23,6 +23,9 @@ public class GameController : MonoBehaviour {
 
     public GameObject pauseMenu;
     public GameObject pauseFirstButton;
+
+    public GameObject timeUpMenu;
+    public GameObject timeUpFirstButton;
     
 	// Use this for initialization
 	void Start () {
@@ -37,7 +40,10 @@ public class GameController : MonoBehaviour {
         if (pauseMenu == null) pauseMenu = GameObject.Find("PauseMenu");
         if (pauseFirstButton == null) pauseFirstButton = pauseMenu.transform.FindChild("Buttons/Resume").gameObject;
 
-        pauseMenu.SetActive(false);
+        if (timeUpMenu == null) timeUpMenu = GameObject.Find("TimeUpMenu");
+        if (timeUpFirstButton == null) timeUpFirstButton = timeUpMenu.transform.FindChild("Buttons/Restart").gameObject;
+
+        HideMenus();
 	}
 	
 	// Update is called once per frame
@@ -70,6 +76,7 @@ public class GameController : MonoBehaviour {
                     //timer.StopTimer();
                     fillterController.StopBlinking();
                     fillterController.Change2Black();
+                    timeUpMenu.SetActive(true);
                 }
                 break;
 
@@ -89,7 +96,6 @@ public class GameController : MonoBehaviour {
         fillterController.StopBlinking();
         fillterController.Change2Black();
         pauseMenu.SetActive(true);
-        //pauseMenu.GetComponent<FocusController>().SelectFirstButton();
         FocusGameObject(pauseFirstButton);
     }
     public void ResumeGame()
@@ -97,13 +103,13 @@ public class GameController : MonoBehaviour {
         gameState = GameState.PLAYING;
         timer.StartTimer();
         fillterController.Change2Clear();
-        pauseMenu.SetActive(false);
+        HideMenus();
     }
     public void RestartGame()
     {
         gameState = GameState.START;
         fillterController.Change2Clear();
-        pauseMenu.SetActive(false);
+        HideMenus();
 
         //playerの初期化(ポーズ状態の速度、加速度も初期化)
         timer.StartTimer();
@@ -121,4 +127,9 @@ public class GameController : MonoBehaviour {
         EventSystem.current.SetSelectedGameObject(focusedObj);
     }
 
+    void HideMenus()
+    {
+        pauseMenu.SetActive(false);
+        timeUpMenu.SetActive(false);
+    }
 }

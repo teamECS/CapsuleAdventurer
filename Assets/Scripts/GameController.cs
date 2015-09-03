@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour {
         PLAYING,
         PAUSE,
         TIMEUP,
-        GOAL
+        FINISH
     }
 
     private GameState gameState;
@@ -119,6 +119,14 @@ public class GameController : MonoBehaviour {
         cameraController.Restart();
         //タイムゲージの更新
         gaugeController.UpdateGauge(timer.GetRateOfTimeRemaining());
+    }
+    public void FinishGame()
+    {
+        gameState = GameState.FINISH;
+        timer.StopTimer();
+        fillterController.StopBlinking();
+
+        fillterController.Change2Black();
     }
 
     void FocusGameObject(GameObject focusedObj)

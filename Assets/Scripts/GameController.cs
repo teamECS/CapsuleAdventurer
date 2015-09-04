@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour {
         if (pauseFirstButton == null) pauseFirstButton = pauseMenu.transform.FindChild("Buttons/Resume").gameObject;
 
         if (timeUpMenu == null) timeUpMenu = GameObject.Find("TimeUpMenu");
-        if (timeUpFirstButton == null) timeUpFirstButton = timeUpMenu.transform.FindChild("Buttons/Restart").gameObject;
+        if (timeUpFirstButton == null) timeUpFirstButton = timeUpMenu.transform.FindChild("Buttons/Reset").gameObject;
 
         HideMenus();
 	}
@@ -105,21 +105,25 @@ public class GameController : MonoBehaviour {
         fillterController.Change2Clear();
         HideMenus();
     }
-    public void RestartGame()
+    public void ResetGame()
     {
-        gameState = GameState.START;
-        fillterController.Change2Clear();
-        HideMenus();
-
-        //playerの初期化(ポーズ状態の速度、加速度も初期化)
-        timer.StartTimer();
-        playerController.Restart();
-        timer.ResetTimer();
-        //カメラの初期化
-        cameraController.Restart();
-        //タイムゲージの更新
-        gaugeController.UpdateGauge(timer.GetRateOfTimeRemaining());
+        Application.LoadLevel(Application.loadedLevel);
     }
+    //public void ResetGame()
+    //{
+    //    gameState = GameState.START;
+    //    fillterController.Change2Clear();
+    //    HideMenus();
+
+    //    //playerの初期化(ポーズ状態の速度、加速度も初期化)
+    //    timer.StartTimer();
+    //    playerController.Reset();
+    //    timer.ResetTimer();
+    //    //カメラの初期化
+    //    cameraController.Reset();
+    //    //タイムゲージの更新
+    //    gaugeController.UpdateGauge(timer.GetRateOfTimeRemaining());
+    //}
     public void FinishGame()
     {
         gameState = GameState.FINISH;

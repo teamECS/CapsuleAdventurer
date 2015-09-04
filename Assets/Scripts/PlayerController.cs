@@ -31,17 +31,17 @@ public class PlayerController : MonoBehaviour {
 
     bool IsJumping()
     {
-        int layerMaskFloor = 1 << 0;
+        int layerMaskFloor = 1 << 8;
 
         if (Physics.Raycast(transform.position, -Vector3.up, this.GetComponent<SphereCollider>().radius, layerMaskFloor)) return false;
         else return true;
     }
 
-    public void Restart()
-    {
-        transform.rotation = initialRot;
-        transform.position = initialPos;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-    }
+    //public void Reset()
+    //{
+    //    transform.rotation = initialRot;
+    //    transform.position = initialPos;
+    //    GetComponent<Rigidbody>().velocity = Vector3.zero;
+    //    GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    //}
 }

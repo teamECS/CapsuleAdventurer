@@ -35,10 +35,10 @@ public class CameraController : MonoBehaviour {
         offset = transform.position - player.transform.position;
     }
 
-    public void Restart()
-    {
-        transform.rotation = initialRot;
-        transform.position = initialPos;
-        offset = initialOffset;
-    }
+    //public void Reset()
+    //{
+    //    transform.rotation = initialRot;
+    //    transform.position = initialPos;
+    //    offset = initialOffset;
+    //}
 }

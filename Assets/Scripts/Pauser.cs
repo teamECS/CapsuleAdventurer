@@ -26,7 +26,7 @@ public class Pauser : MonoBehaviour {
 	}
  
 	// 破棄されるとき
-	void OnDestory() {
+	void OnDestroy() {
 		// ポーズ対象から除外する
 		targets.Remove(this);
 	}

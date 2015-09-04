@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float drivingForce = 1f;
     public float jumpingForce = 300f;
 
+    private int layerMask;
     private Quaternion initialRot;
     private Vector3 initialPos;
 
@@ -15,7 +16,8 @@ public class PlayerController : MonoBehaviour {
         initialRot = transform.rotation;
         initialPos = transform.position;
 
-        if(mainCamera == null) mainCamera = GameObject.Find("MainCamera");
+        if (mainCamera == null) mainCamera = GameObject.Find("MainCamera");
+        layerMask = (1 << LayerMask.NameToLayer("Field")) + (1 << LayerMask.NameToLayer("RealObject"));
     }
 
     void FixedUpdate()
@@ -31,9 +33,7 @@ public class PlayerController : MonoBehaviour {
 
     bool IsJumping()
     {
-        int layerMaskFloor = 1 << 8;
-
-        if (Physics.Raycast(transform.position, -Vector3.up, this.GetComponent<SphereCollider>().radius, layerMaskFloor)) return false;
+        if (Physics.Raycast(transform.position, -Vector3.up, this.GetComponent<SphereCollider>().radius, layerMask)) return false;
         else return true;
     }
 

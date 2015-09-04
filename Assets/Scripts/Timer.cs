@@ -34,6 +34,11 @@ public class Timer : MonoBehaviour {
         Pauser.Pause();
     }
 
+    public void TurnBackTime(float backTime)
+    {
+        timeRemaining += backTime;
+    }
+
     public float GetRateOfTimeRemaining()
     {
         return timeRemaining / timeLimit;

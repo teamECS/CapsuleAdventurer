@@ -3,9 +3,12 @@ using System.Collections;
 
 public class ItemController : MonoBehaviour {
 
+    private Timer timer;
+    public float backTime = 5f;
+
 	// Use this for initialization
 	void Start () {
-	
+        timer = GameObject.Find("Timer").GetComponent<Timer>();
 	}
 	
 	// Update is called once per frame
@@ -16,5 +19,6 @@ public class ItemController : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         Destroy(this.gameObject);
+        timer.TurnBackTime(backTime);
     }
 }

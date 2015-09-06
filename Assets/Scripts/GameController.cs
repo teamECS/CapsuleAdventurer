@@ -22,10 +22,7 @@ public class GameController : MonoBehaviour {
     public PlayerController playerController;
 
     public GameObject pauseMenu;
-    public GameObject pauseFirstButton;
-
     public GameObject timeUpMenu;
-    public GameObject timeUpFirstButton;
     
 	// Use this for initialization
 	void Start () {
@@ -38,16 +35,16 @@ public class GameController : MonoBehaviour {
         if (playerController == null) playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
         if (pauseMenu == null) pauseMenu = GameObject.Find("PauseMenu");
-        if (pauseFirstButton == null) pauseFirstButton = pauseMenu.transform.FindChild("Buttons/Resume").gameObject;
-
         if (timeUpMenu == null) timeUpMenu = GameObject.Find("TimeUpMenu");
-        if (timeUpFirstButton == null) timeUpFirstButton = timeUpMenu.transform.FindChild("Buttons/Reset").gameObject;
 
         HideMenus();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Input.GetKeyDown(KeyCode.C)) Application.CaptureScreenshot("screenshot.png");
+
         switch (gameState)
         {
             case GameState.START:
@@ -71,13 +68,7 @@ public class GameController : MonoBehaviour {
                     PauseGame();
                 //TIMEUP状態への遷移
                 if (timer.GetRateOfTimeRemaining() == 0)
-                {
-                    gameState = GameState.TIMEUP;
-                    //timer.StopTimer();
-                    fillterController.StopBlinking();
-                    fillterController.Change2Black();
-                    timeUpMenu.SetActive(true);
-                }
+                    TimeUpGame();
                 break;
 
             case GameState.PAUSE:
@@ -96,7 +87,7 @@ public class GameController : MonoBehaviour {
         fillterController.StopBlinking();
         fillterController.Change2Black();
         pauseMenu.SetActive(true);
-        FocusGameObject(pauseFirstButton);
+        FocusGameObject(pauseMenu.transform.FindChild("Buttons/Resume").gameObject);
     }
     public void ResumeGame()
     {
@@ -109,21 +100,6 @@ public class GameController : MonoBehaviour {
     {
         Application.LoadLevel(Application.loadedLevel);
     }
-    //public void ResetGame()
-    //{
-    //    gameState = GameState.START;
-    //    fillterController.Change2Clear();
-    //    HideMenus();
-
-    //    //playerの初期化(ポーズ状態の速度、加速度も初期化)
-    //    timer.StartTimer();
-    //    playerController.Reset();
-    //    timer.ResetTimer();
-    //    //カメラの初期化
-    //    cameraController.Reset();
-    //    //タイムゲージの更新
-    //    gaugeController.UpdateGauge(timer.GetRateOfTimeRemaining());
-    //}
     public void FinishGame()
     {
         gameState = GameState.FINISH;
@@ -131,6 +107,15 @@ public class GameController : MonoBehaviour {
         fillterController.StopBlinking();
 
         fillterController.Change2Black();
+    }
+    public void TimeUpGame()
+    {
+        gameState = GameState.TIMEUP;
+        //timer.StopTimer();
+        fillterController.StopBlinking();
+        fillterController.Change2Black();
+        timeUpMenu.SetActive(true);
+        FocusGameObject(timeUpMenu.transform.FindChild("Buttons/Reset").gameObject);
     }
 
     void FocusGameObject(GameObject focusedObj)

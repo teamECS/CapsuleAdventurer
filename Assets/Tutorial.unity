@@ -2556,6 +2556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74127fabf0b7cb54e8afdbb92cd0da88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 11478818, guid: 4c5e0b7ecdce8684fa71ac0ce1e50d16, type: 2}
   timer: {fileID: 306679236}
   cameraController: {fileID: 1214065737}
   gaugeController: {fileID: 725468636}

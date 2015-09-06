@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour {
 
     public float timeLimit = 30;
 
-    private float timeRemaining;
+    private float remainingTime;
     private bool timerStarted;
 
 	// Use this for initialization
@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour {
 
     public void ResetTimer()
     {
-        timeRemaining = timeLimit;
+        remainingTime = timeLimit;
         timerStarted = false;
         Pauser.Pause();
     }
@@ -36,21 +36,25 @@ public class Timer : MonoBehaviour {
 
     public void TurnBackTime(float backTime)
     {
-        timeRemaining += backTime;
+        remainingTime += backTime;
     }
 
-    public float GetRateOfTimeRemaining()
+    public float GetRateOfRemainingTime()
     {
-        return timeRemaining / timeLimit;
+        return remainingTime / timeLimit;
+    }
+    public float GetRemainingTime()
+    {
+        return remainingTime;
     }
 
 	// Update is called once per frame
 	void Update () {
         if (timerStarted){
-            timeRemaining -= Time.deltaTime;
-            if (timeRemaining <= 0)
+            remainingTime -= Time.deltaTime;
+            if (remainingTime <= 0)
             {
-                timeRemaining = 0;
+                remainingTime = 0;
                 StopTimer();
             }
         }

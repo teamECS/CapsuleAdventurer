@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour {
 
     private GameState gameState;
 
+    public GameManager gameManager;
+
     public Timer timer;
     public CameraController cameraController;
     public GaugeController gaugeController;
@@ -27,6 +29,8 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gameState = GameState.START;
+
+        if (gameManager == null) gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         if (timer == null) timer = GameObject.Find("Timer").GetComponent<Timer>();
         if (cameraController == null) cameraController = GameObject.Find("MainCamera").GetComponent<CameraController>();
@@ -57,21 +61,17 @@ public class GameController : MonoBehaviour {
                 //カメラの更新
                 cameraController.UpdateCamera();
                 //タイムゲージの更新
-                gaugeController.UpdateGauge(timer.GetRateOfTimeRemaining());
+                gaugeController.UpdateGauge(timer.GetRateOfRemainingTime());
                 //赤色フィルター点滅のon
-                if (timer.GetRateOfTimeRemaining() <= 0.1)
+                if (timer.GetRateOfRemainingTime() <= 0.1)
                     fillterController.StartBlinking();
 
-                //GOAL状態への遷移
                 //PAUSE状態への遷移
                 if (Input.GetKeyDown(KeyCode.S))
                     PauseGame();
                 //TIMEUP状態への遷移
-                if (timer.GetRateOfTimeRemaining() == 0)
+                if (timer.GetRateOfRemainingTime() == 0)
                     TimeUpGame();
-                break;
-
-            case GameState.PAUSE:
                 break;
 
             default:
@@ -98,15 +98,15 @@ public class GameController : MonoBehaviour {
     }
     public void ResetGame()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        gameManager.LoadScene(Application.loadedLevelName);
     }
     public void FinishGame()
     {
         gameState = GameState.FINISH;
         timer.StopTimer();
-        fillterController.StopBlinking();
 
-        fillterController.Change2Black();
+        gameManager.SetRemainingTime(timer.GetRemainingTime());
+        gameManager.LoadScene("Result");
     }
     public void TimeUpGame()
     {

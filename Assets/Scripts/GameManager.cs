@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour {
 
     private static bool isExist = false;
     private float remainingTime;
+    private string playerName;
 
     void Awake(){
         if (!isExist)
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour {
 
     public void LoadScene(string sceneName)
     {
-        Debug.Log("now loaded " + sceneName);
+        Debug.Log("loaded " + sceneName);
         Application.LoadLevel(sceneName);
     }
 
@@ -34,5 +35,13 @@ public class GameManager : MonoBehaviour {
     public float GetRemainingTime()
     {
         return remainingTime;
+    }
+    public void SetPlayerName(string name)
+    {
+        playerName = name;
+    }
+    public string GetPlayerName()
+    {
+        return playerName;
     }
 }

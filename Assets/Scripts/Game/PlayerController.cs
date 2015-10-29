@@ -7,13 +7,13 @@ public class PlayerController : MonoBehaviour {
     public float drivingForce = 1f;
     public float jumpingForce = 300f;
 
-    private int layerMask;
+    //private int layerMask;
     private bool isJumping = false;
 
     void Start()
     {
         if (mainCamera == null) mainCamera = GameObject.Find("MainCamera");
-        layerMask = (1 << LayerMask.NameToLayer("Field")) + (1 << LayerMask.NameToLayer("RealObject"));
+        //layerMask = (1 << LayerMask.NameToLayer("Field")) + (1 << LayerMask.NameToLayer("RealObject"));
     }
 
     void FixedUpdate()

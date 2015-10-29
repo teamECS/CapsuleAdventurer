@@ -12,6 +12,6 @@ public class GoalZone : MonoBehaviour {
 	
     void OnTriggerEnter(Collider other)
     {
-        gameController.FinishGame();
+        if (other.tag == "Player")  gameController.FinishGame();
     }
 }

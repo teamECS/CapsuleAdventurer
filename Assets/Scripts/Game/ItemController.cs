@@ -18,7 +18,11 @@ public class ItemController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Destroy(this.gameObject);
-        timer.TurnBackTime(backTime);
+        Debug.Log(other.tag);
+        if (other.tag == "Player")
+        {
+            Destroy(this.gameObject);
+            timer.TurnBackTime(backTime);
+        }
     }
 }

@@ -22,10 +22,14 @@ public class PlayerController : MonoBehaviour {
         direction.y = 0;
         direction = direction.normalized;
 
-        GetComponent<Rigidbody>().AddForce(direction * drivingForce);
+        if (!isJumping) {
+            GetComponent<Rigidbody>().AddForce(direction * drivingForce);
 
-        if (Input.GetKey(KeyCode.Space) && !isJumping) GetComponent<Rigidbody>().AddForce(Vector3.up * jumpingForce);
-        isJumping = true;
+            if (Input.GetKey(KeyCode.Space)) {
+                GetComponent<Rigidbody>().AddForce(Vector3.up * jumpingForce);
+                isJumping = true;
+            }
+        }
     }
 
     void OnCollisionStay(Collision collision)

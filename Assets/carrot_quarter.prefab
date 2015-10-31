@@ -12,6 +12,7 @@ GameObject:
   - 64: {fileID: 6415172}
   - 23: {fileID: 2354208}
   - 54: {fileID: 5434752}
+  - 114: {fileID: 11486930}
   m_Layer: 0
   m_Name: carrot_quarter
   m_TagString: Untagged
@@ -90,6 +91,17 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: fe5cbfe5442830a498cde418d0096dd7, type: 3}
+--- !u!114 &11486930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: addd63dc43b4d074495308f48a1c2056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

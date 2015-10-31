@@ -12,26 +12,40 @@ public class Timer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        StopTimer();
         ResetTimer();
 	}
 
-    public void ResetTimer()
+    // Update is called once per frame
+    void Update()
     {
-        remainingTime = timeLimit;
-        timerStarted = false;
-        Pauser.Pause();
+        if (timerStarted)
+        {
+            remainingTime -= Time.deltaTime;
+            if (remainingTime <= 0)
+            {
+                StopTimer();
+                remainingTime = 0;
+            }
+        }
     }
+
 
     public void StartTimer()
     {
         timerStarted = true;
-        Pauser.Resume();
+        //Pauser.Resume();
+        Time.timeScale = 1;
     }
-
     public void StopTimer()
     {
         timerStarted = false;
-        Pauser.Pause();
+        //Pauser.Pause();
+        Time.timeScale = 0;
+    }
+    public void ResetTimer()
+    {
+        remainingTime = timeLimit;
     }
 
     public void TurnBackTime(float backTime)
@@ -48,16 +62,4 @@ public class Timer : MonoBehaviour {
     {
         return remainingTime;
     }
-
-	// Update is called once per frame
-	void Update () {
-        if (timerStarted){
-            remainingTime -= Time.deltaTime;
-            if (remainingTime <= 0)
-            {
-                remainingTime = 0;
-                StopTimer();
-            }
-        }
-	}
 }

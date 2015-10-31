@@ -37,6 +37,7 @@ public class Timer : MonoBehaviour {
     public void TurnBackTime(float backTime)
     {
         remainingTime += backTime;
+        if (remainingTime > timeLimit) remainingTime = timeLimit;
     }
 
     public float GetRateOfRemainingTime()

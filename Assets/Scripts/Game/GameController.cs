@@ -67,8 +67,10 @@ public class GameController : MonoBehaviour {
                     fillterController.StartBlinking();
 
                 //PAUSE状態への遷移
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.S)){
                     PauseGame();
+                    PrintPauseMenu();
+                }
                 //TIMEUP状態への遷移
                 if (timer.GetRateOfRemainingTime() == 0)
                     TimeUpGame();
@@ -86,6 +88,9 @@ public class GameController : MonoBehaviour {
         timer.StopTimer();
         fillterController.StopBlinking();
         fillterController.Change2Black();
+    }
+    private void PrintPauseMenu()
+    {
         pauseMenu.SetActive(true);
         FocusGameObject(pauseMenu.transform.FindChild("Buttons/Resume").gameObject);
     }
@@ -118,7 +123,7 @@ public class GameController : MonoBehaviour {
         FocusGameObject(timeUpMenu.transform.FindChild("Buttons/Reset").gameObject);
     }
 
-    void FocusGameObject(GameObject focusedObj)
+    public void FocusGameObject(GameObject focusedObj)
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(focusedObj);

@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3346818}
   - 64: {fileID: 6456386}
   - 23: {fileID: 2399608}
-  - 114: {fileID: 11450548}
+  - 114: {fileID: 11422884}
   m_Layer: 0
   m_Name: Guide
   m_TagString: Untagged
@@ -74,7 +74,7 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11450548
+--- !u!114 &11422884
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,8 +86,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
-  popupMenu: {fileID: 0}
-  text: test
+  menuController: {fileID: 0}
+  text: "\u5143"
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -102,6 +102,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: text
+      value: "\u5143"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

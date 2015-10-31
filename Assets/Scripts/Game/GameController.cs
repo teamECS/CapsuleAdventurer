@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 using System.Collections;
 
 public class GameController : MonoBehaviour {
@@ -22,9 +21,7 @@ public class GameController : MonoBehaviour {
     public GaugeController gaugeController;
     public FillterController fillterController;
     public PlayerController playerController;
-
-    public GameObject pauseMenu;
-    public GameObject timeUpMenu;
+    public MenuController menuController;
     
 	// Use this for initialization
 	void Start () {
@@ -37,11 +34,7 @@ public class GameController : MonoBehaviour {
         if (gaugeController == null) gaugeController = GameObject.Find("Gauge").GetComponent<GaugeController>();
         if (fillterController == null) fillterController = GameObject.Find("Fillter").GetComponent<FillterController>();
         if (playerController == null) playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-
-        if (pauseMenu == null) pauseMenu = GameObject.Find("PauseMenu");
-        if (timeUpMenu == null) timeUpMenu = GameObject.Find("TimeUpMenu");
-
-        HideMenus();
+        if (menuController == null) menuController = GameObject.Find("Menus").GetComponent<MenuController>();
 	}
 	
 	// Update is called once per frame
@@ -53,8 +46,10 @@ public class GameController : MonoBehaviour {
         {
             case GameState.START:
                 //PLAYING状態への遷移
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.S)) {
                     ResumeGame();
+                    menuController.HideMenus();
+                }
                 break;
 
             case GameState.PLAYING:
@@ -69,13 +64,15 @@ public class GameController : MonoBehaviour {
                     fillterController.StopBlinking();
 
                 //PAUSE状態への遷移
-                if (Input.GetKeyDown(KeyCode.S)){
+                if (Input.GetKeyDown(KeyCode.S)) {
                     PauseGame();
-                    PrintPauseMenu();
+                    menuController.DisplayPauseMenu();
                 }
                 //TIMEUP状態への遷移
-                if (timer.GetRateOfRemainingTime() == 0)
+                if (timer.GetRateOfRemainingTime() == 0) {
                     TimeUpGame();
+                    menuController.DisplayTimeUpMenu();
+                }
                 break;
 
             default:
@@ -91,17 +88,11 @@ public class GameController : MonoBehaviour {
         fillterController.StopBlinking();
         fillterController.Change2Black();
     }
-    private void PrintPauseMenu()
-    {
-        pauseMenu.SetActive(true);
-        FocusGameObject(pauseMenu.transform.FindChild("Buttons/Resume").gameObject);
-    }
     public void ResumeGame()
     {
         gameState = GameState.PLAYING;
         timer.StartTimer();
         fillterController.Change2Clear();
-        HideMenus();
     }
     public void ResetGame()
     {
@@ -121,19 +112,7 @@ public class GameController : MonoBehaviour {
         //timer.StopTimer();
         fillterController.StopBlinking();
         fillterController.Change2Black();
-        timeUpMenu.SetActive(true);
-        FocusGameObject(timeUpMenu.transform.FindChild("Buttons/Reset").gameObject);
     }
 
-    public void FocusGameObject(GameObject focusedObj)
-    {
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(focusedObj);
-    }
 
-    void HideMenus()
-    {
-        pauseMenu.SetActive(false);
-        timeUpMenu.SetActive(false);
-    }
 }

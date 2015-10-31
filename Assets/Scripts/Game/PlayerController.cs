@@ -7,13 +7,17 @@ public class PlayerController : MonoBehaviour {
     public float drivingForce = 1f;
     public float jumpingForce = 300f;
 
-    //private int layerMask;
-    private bool isJumping = false;
+    private bool isGrounded = true;
+    private bool isJustKeyDown = false;
 
     void Start()
     {
         if (mainCamera == null) mainCamera = GameObject.Find("MainCamera");
-        //layerMask = (1 << LayerMask.NameToLayer("Field")) + (1 << LayerMask.NameToLayer("RealObject"));
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) isJustKeyDown = true;
     }
 
     void FixedUpdate()
@@ -22,27 +26,28 @@ public class PlayerController : MonoBehaviour {
         direction.y = 0;
         direction = direction.normalized;
 
-        if (!isJumping) {
+        if (isGrounded) {
             GetComponent<Rigidbody>().AddForce(direction * drivingForce);
 
-            if (Input.GetKey(KeyCode.Space)) {
+            if (isJustKeyDown) {
                 GetComponent<Rigidbody>().AddForce(Vector3.up * jumpingForce);
-                isJumping = true;
+                isGrounded = false;
             }
         }
+        isJustKeyDown = false;
     }
 
     void OnCollisionStay(Collision collision)
     {
         foreach (ContactPoint point in collision.contacts)
         {
-            if (point.normal.y >= 0.5) isJumping = false;
+            if (point.normal.y > 0) isGrounded = true;
+            //if (point.normal.y > 0 && this.GetComponent<Rigidbody>().velocity.y <= 1) isGrounded = true;
         }
     }
 
-    //bool IsJumping()
-    //{
-    //    if (Physics.Raycast(transform.position, -Vector3.up, this.GetComponent<SphereCollider>().radius, layerMask)) return false;
-    //    else return true;
-    //}
+    void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
+    }
 }

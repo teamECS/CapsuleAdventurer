@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956a9e4906fd3314293ca1dccc70246e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 100
+  timeLimit: 30
 --- !u!4 &306679237
 Transform:
   m_ObjectHideFlags: 0
@@ -2659,7 +2659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: .196078435}
+  m_Color: {r: 1, g: 0, b: 0, a: .392156869}
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0

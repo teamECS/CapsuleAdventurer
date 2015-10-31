@@ -65,6 +65,8 @@ public class GameController : MonoBehaviour {
                 //赤色フィルター点滅のon
                 if (timer.GetRateOfRemainingTime() <= 0.1)
                     fillterController.StartBlinking();
+                else
+                    fillterController.StopBlinking();
 
                 //PAUSE状態への遷移
                 if (Input.GetKeyDown(KeyCode.S)){

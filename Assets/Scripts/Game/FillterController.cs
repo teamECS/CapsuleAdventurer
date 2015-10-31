@@ -21,11 +21,11 @@ public class FillterController : MonoBehaviour {
     }
     public void Change2Black()
     {
-        image.color = new Color(0f, 0f, 0f, 50f / 255f);
+        image.color = new Color(0f, 0f, 0f, 100f / 255f);
     }
     public void Change2Red()
     {
-        image.color = new Color(1f, 0f, 0f, 50f / 255f);
+        image.color = new Color(1f, 0f, 0f, 100f / 255f);
     }
 
     IEnumerator BlinkRedFillter()
@@ -52,6 +52,7 @@ public class FillterController : MonoBehaviour {
         if (isBlinking)
         {
             StopCoroutine("BlinkRedFillter");
+            Change2Clear();
             isBlinking = false;
         }
     }

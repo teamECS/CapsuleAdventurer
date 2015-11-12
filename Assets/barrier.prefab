@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bccbc8d3c2b244784540403fc0ea49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backTime: 30
+  backTime: 10
 --- !u!114 &11475672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +151,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: backTime
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled

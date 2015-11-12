@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
         if (gaugeController == null) gaugeController = GameObject.Find("Gauge").GetComponent<GaugeController>();
         if (fillterController == null) fillterController = GameObject.Find("Fillter").GetComponent<FillterController>();
         //if (playerController == null) playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        if (menuController == null) menuController = GameObject.Find("Menus").GetComponent<MenuController>();
+        if (menuController == null) menuController = GameObject.Find("MenuController").GetComponent<MenuController>();
 	}
 	
 	// Update is called once per frame

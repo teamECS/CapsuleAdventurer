@@ -11,13 +11,19 @@ public class GuideController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         if (gameController == null) gameController = GameObject.Find("GameController").GetComponent<GameController>();
-        if (menuController == null) menuController = GameObject.Find("Menus").GetComponent<MenuController>();
+        if (menuController == null) menuController = GameObject.Find("MenuController").GetComponent<MenuController>();
 	}
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerStay(Collider other) {
         if (other.tag == "Player") {
-            gameController.PauseGame();
+            //gameController.PauseGame();
             menuController.DisplayPopupMenu(text);
+        }
+    }
+
+    void OnTriggerExit(Collider other) {
+        if (other.tag == "Player") {
+            menuController.HideMenus();
         }
     }
 }

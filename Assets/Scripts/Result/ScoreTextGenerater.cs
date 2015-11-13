@@ -10,6 +10,11 @@ public class ScoreTextGenerater : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         if(scoreText==null) scoreText = GetComponent<Text>();
-        scoreText.text = "あなたのスコア：" + Mathf.Round(gameManager.GetRemainingTime() * 100);
+        scoreText.text = "あなたのスコア：" + gameManager.GetScore();
 	}
+
+    void Update() {
+        if (gameManager.GetPlayerName() != "") scoreText.text = "「" + gameManager.GetPlayerName() + "」さんのスコア：" + gameManager.GetScore();
+        else scoreText.text = "あなたのスコア：" + gameManager.GetScore();
+    }
 }

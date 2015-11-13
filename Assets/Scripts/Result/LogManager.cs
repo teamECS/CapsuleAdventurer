@@ -9,6 +9,8 @@ public class LogManager : MonoBehaviour
     private string filePath;
     private IList logList;
 
+    public GameManager gameManager;
+
 	// Use this for initialization
 	void Start () {
 
@@ -23,18 +25,22 @@ public class LogManager : MonoBehaviour
         logList = Json.Deserialize(jsonStr) as IList;
 	}
 
-    void AddLog(string name, int score)
+   public  void AddLog()
     {
-        var dic = new Dictionary<string, object>();
-        dic.Add("name", name);
-        dic.Add("score", score);
+        if (gameManager.GetPlayerName() != "")
+        {
+            var dic = new Dictionary<string, object>();
+            dic.Add("name", gameManager.GetPlayerName());
+            dic.Add("score", gameManager.GetScore());
 
-        logList.Add(dic);
-        string jsonStr = Json.Serialize(logList);
-        File.WriteAllText(filePath, jsonStr);
+            logList.Add(dic);
+            string jsonStr = Json.Serialize(logList);
+            File.WriteAllText(filePath, jsonStr);
+        }
     }
 
-    void PrintLog() {
+   public void PrintLog()
+   {
         foreach (IDictionary player in logList)
         {
             Debug.Log(player["name"]);

@@ -3,24 +3,8 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-    private static bool isExist = false;
-    private float remainingTime;
-    private string playerName;
-
-    void Awake(){
-        if (!isExist)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            isExist = true;
-        }
-        else Destroy(this.gameObject);
-    }
-
-	// Use this for initialization
-	void Start () {
-        remainingTime = 0;
-	}
-	
+    private float remainingTime = 0;
+    private string playerName = "";
 
     public void LoadScene(string sceneName)
     {
@@ -43,5 +27,9 @@ public class GameManager : MonoBehaviour {
     public string GetPlayerName()
     {
         return playerName;
+    }
+    public float GetScore()
+    {
+        return Mathf.Round(remainingTime*100);
     }
 }

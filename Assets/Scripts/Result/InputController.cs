@@ -7,13 +7,11 @@ public class InputController : MonoBehaviour {
     public GameManager gameManager;
     public InputField inputField;
 	
-    public void SaveName()
+    public void SetPlayerName()
     {
-        gameManager.SetPlayerName(inputField.text);
-    }
-
-    public void RecordPlayData()
-    {
-        gameManager.GetRemainingTime();
+        if (inputField.text != "")
+        {
+            gameManager.SetPlayerName(inputField.text);
+        }
     }
 }

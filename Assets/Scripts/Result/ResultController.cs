@@ -5,26 +5,46 @@ using System.Collections;
 public class ResultController : MonoBehaviour {
 
     public GameObject resultMenu;
-    public GameObject ranking;
-    public GameObject nameInput;
+    public GameObject rankingMenu;
+    public GameObject nameInputMenu;
 
     // Use this for initialization
     void Start()
     {
         if (resultMenu == null) resultMenu = GameObject.Find("ResultMenu");
-        if (ranking == null) ranking = GameObject.Find("Ranking");
-        if (nameInput == null) nameInput = GameObject.Find("NameInput");
+        if (rankingMenu == null) rankingMenu = GameObject.Find("RankingMenu");
+        if (nameInputMenu == null) nameInputMenu = GameObject.Find("NameInputMenu");
 
+        HideMenus();
+        DisplayResultMenu();
+    }
+
+    public void DisplayResultMenu()
+    {
         resultMenu.SetActive(true);
-        ranking.SetActive(false);
-        nameInput.SetActive(false);
-
         FocusGameObject(resultMenu.transform.FindChild("Buttons/NameInput").gameObject);
+    }
+    public void DisplayRankingMenu()
+    {
+        rankingMenu.SetActive(true);
+        FocusGameObject(rankingMenu.transform.FindChild("Buttons/Back").gameObject);
+    }
+    public void DisplayNamiInputMenu()
+    {
+        nameInputMenu.SetActive(true);
+        FocusGameObject(nameInputMenu.transform.FindChild("Buttons/Enter").gameObject);
     }
 
     public void FocusGameObject(GameObject focusedObj)
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(focusedObj);
+    }
+
+    public void HideMenus()
+    {
+        resultMenu.SetActive(false);
+        rankingMenu.SetActive(false);
+        nameInputMenu.SetActive(false);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ResultController : MonoBehaviour {
 
@@ -39,6 +40,11 @@ public class ResultController : MonoBehaviour {
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(focusedObj);
+    }
+
+    public void SetInteractive(GameObject buttonObj, bool b)
+    {
+        buttonObj.GetComponent<Button>().interactable = b;
     }
 
     public void HideMenus()

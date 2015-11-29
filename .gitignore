@@ -32,3 +32,4 @@ Thumbs.db
 *.html
 *.unity3d
 test_Data/
+Assets/Data/log.json

@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour {
 	void Start () {
         if (player == null) player = GameObject.Find("Player");
         //offset = transform.position-player.transform.position;
-        offset = new Vector3(0f, 2.5f, -3f);
+        offset = new Vector3(0f, 2.5f, -3.5f);
 	}
 
     //void LateUpdate () {

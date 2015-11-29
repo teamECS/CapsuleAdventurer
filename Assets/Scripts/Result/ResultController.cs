@@ -9,13 +9,16 @@ public class ResultController : MonoBehaviour {
     public GameObject rankingMenu;
     public GameObject nameInputMenu;
 
-    // Use this for initialization
-    void Start()
+    void Awake()
     {
         if (resultMenu == null) resultMenu = GameObject.Find("ResultMenu");
         if (rankingMenu == null) rankingMenu = GameObject.Find("RankingMenu");
         if (nameInputMenu == null) nameInputMenu = GameObject.Find("NameInputMenu");
+    }
 
+    // Use this for initialization
+    void Start()
+    {
         HideMenus();
         DisplayResultMenu();
     }

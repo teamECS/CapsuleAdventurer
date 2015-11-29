@@ -12,7 +12,7 @@ public class LogManager : MonoBehaviour
     public GameManager gameManager;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
         filePath = Application.dataPath + "/data/log.json";
         if (!File.Exists(filePath)){
@@ -38,6 +38,21 @@ public class LogManager : MonoBehaviour
             File.WriteAllText(filePath, jsonStr);
         }
     }
+
+   public void SortList()
+   {
+       ArrayList.Adapter(logList).Sort();
+   }
+
+   public string CvtStr()
+   {
+       string str = "";
+       foreach (IDictionary player in logList)
+       {
+           str += player["name"] + " : " + player["score"] + "\r\n";
+       }
+       return str;
+   }
 
    public void PrintLog()
    {

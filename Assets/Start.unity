@@ -213,7 +213,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30C6\u30AD\u30B9\u30C82\n"
+  m_Text: "\u306F\u3058\u3081\u3066\u306E\u4EBA\u306F\u3053\u3053\u304B\u3089\uFF01\uFF01\n"
 --- !u!222 &28102528
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n\u30C6\u30AD\u30B9\u30C81"
+  m_Text: "\n\u80C3\u30B9\u30C6\u30FC\u30B8"
 --- !u!222 &83921911
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -381,7 +381,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n\u30C6\u30AD\u30B9\u30C81"
+  m_Text: "\n\u5C0F\u8178\u30B9\u30C6\u30FC\u30B8"
 --- !u!222 &447095084
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -443,7 +443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &607249590
 RectTransform:
   m_ObjectHideFlags: 0
@@ -823,7 +823,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30C6\u30AD\u30B9\u30C82\n"
+  m_Text: "\u80C3\u6DB2\u306B\u6C17\u3092\u3064\u3051\u3088\u3046\uFF01\uFF01\n"
 --- !u!222 &1022787918
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1767,7 +1767,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n\u30C6\u30AD\u30B9\u30C81"
+  m_Text: "\n\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB"
 --- !u!222 &1821546526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1917,15 +1917,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ResumeGame
-        m_Mode: 1
+      - m_Target: {fileID: 11478818, guid: 4c5e0b7ecdce8684fa71ac0ce1e50d16, type: 2}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SmallIntestine
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2150,7 +2150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30C6\u30AD\u30B9\u30C82\n"
+  m_Text: "\u30B9\u30D4\u30FC\u30C9\u306B\u306E\u308D\u3046\uFF01\uFF01\n"
 --- !u!222 &2082755475
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2275,15 +2275,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ResumeGame
-        m_Mode: 1
+      - m_Target: {fileID: 11478818, guid: 4c5e0b7ecdce8684fa71ac0ce1e50d16, type: 2}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Stomach
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,

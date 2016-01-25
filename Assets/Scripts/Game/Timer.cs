@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
 
-    public float timeLimit = 30;
+    public float timeLimit = 30f;
 
     private float remainingTime;
     private bool timerStarted;
+    private float timeRate = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +22,7 @@ public class Timer : MonoBehaviour {
     {
         if (timerStarted)
         {
-            remainingTime -= Time.deltaTime;
+            remainingTime -= timeRate * Time.deltaTime;
             if (remainingTime <= 0)
             {
                 StopTimer();
@@ -61,5 +62,14 @@ public class Timer : MonoBehaviour {
     public float GetRemainingTime()
     {
         return remainingTime;
+    }
+
+    public void SetTimeRate(float _timeRate)
+    {
+        timeRate = _timeRate;
+    }
+    public void ResetTimeRate()
+    {
+        timeRate = 1f;
     }
 }

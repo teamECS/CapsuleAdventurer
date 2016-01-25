@@ -3632,8 +3632,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1214065731}
-  drivingForce: 5
-  jumpingForce: 300
+  drivingForce: 7
+  jumpingForce: 8
+  maxSpeed: 10
 --- !u!54 &2012967381
 Rigidbody:
   m_ObjectHideFlags: 0
